@@ -1,0 +1,139 @@
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
+
+html,
+body {
+    box-sizing: content-box;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 100%;
+    width: 100%;
+    scroll-behavior: smooth;
+}
+
+
+/* NAV */
+
+.navbar-nav {
+    margin: 1.5em;
+}
+
+.navbar-nav a {
+    font-size: 1.5em;
+    margin-right: 1em;
+    text-decoration: underline;
+}
+
+.navbar-nav a:hover {
+    opacity: 0.8;
+    background-color: black;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 576px) {
+    .navbar-nav a {
+        font-size: 1.5em;
+        margin-right: 0;
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 1080px) {
+    .botonesDerecha {
+        display: none;
+    }
+}
+
+@media (max-width: 965px) {
+    .navbar-nav a {
+        font-size: 1em;
+    }
+    .botonesDerecha {
+        display: none;
+    }
+}
+
+
+/* PRIMER CONTAINER */
+
+.containerPrincipal {
+    text-align: center;
+    justify-items: center;
+    background-color: darkorchid;
+    color: black;
+    height: 88vh;
+}
+
+.primerRow {
+    height: 80%;
+}
+
+.bInscribirse {
+    margin: 0 30%;
+}
+
+.border {
+    padding: 15px;
+}
+
+
+/* CUENTA ATRAS */
+
+.cuentaAtras {
+    background-color: dimgray;
+    color: black;
+    height: 15vh;
+}
+
+@media (max-width: 600px) {
+    .compteCB {
+        display: none;
+    }
+}
+
+
+/* BENVINGUDA */
+
+.containerBenvinguda {
+    background-color: firebrick;
+    height: 75vh;
+}
+
+
+/* CLASSIFICACIONS */
+
+.containerClassificacions {
+    text-align: center;
+    justify-items: center;
+    background-color: lightseagreen;
+    height: 20vh;
+}
+
+.classificacionsRow {
+    height: 100%;
+}
+
+
+/* NOTICIES */
+
+.containerNoticies {
+    background-color: tomato;
+    padding: 1.5rem 1rem;
+}
+
+.card-body p {
+    color: black;
+}
+
+
+/* FOOTER */
+
+.page-footer {
+    background-color: lightskyblue;
+    color: black;
+}
+
+.footer-copyright {
+    background-color: rgb(110, 169, 206);
+}
