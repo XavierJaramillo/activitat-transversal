@@ -1,0 +1,2 @@
+# activitat-transversal
+Cursa Bellvitge
