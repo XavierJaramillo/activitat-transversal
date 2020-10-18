@@ -58,23 +58,48 @@ body {
 /* PRIMER CONTAINER */
 
 .containerPrincipal {
+    background-image: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     text-align: center;
     justify-items: center;
-    background-color: darkorchid;
-    color: black;
+    color: white;
     height: 88vh;
 }
 
 .primerRow {
-    height: 80%;
-}
-
-.bInscribirse {
-    margin: 0 30%;
+    height: 65%;
 }
 
 .border {
     padding: 15px;
+}
+
+.buttonI {
+    box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.7), 0 6px 20px 0 rgba(255, 255, 255, 0.7);
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    padding: 1% 15%;
+    background-color: rgba(0, 0, 0, 0.472);
+    border: 2px solid black;
+    border-radius: 12px;
+}
+
+.flecha {
+    height: 50%;
+}
+
+@media (max-width: 600px) {
+    .containerPrincipal {
+        background-image: url(../img/bg-phone.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .buttonI {
+        font-size: larger;
+        width: max-content;
+    }
 }
 
 
