@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-11-2020 a las 17:21:58
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.3.10
+-- Tiempo de generación: 10-11-2020 a las 15:17:42
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,222 +18,142 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `restaurante_bd`
+-- Base de datos: `cursadb`
 --
-CREATE DATABASE restaurante_bd;
-USE restaurante_bd;
+CREATE DATABASE cursadb;
+USE cursadb;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `camareros`
+-- Estructura de tabla para la tabla `tbl_categoria`
 --
 
-CREATE TABLE `camareros` (
-  `id_camarero` int(11) NOT NULL,
-  `nombre_camarero` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
-  `pass_camarero` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `idMantenimiento` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `camareros`
---
-
-INSERT INTO `camareros` (`id_camarero`, `nombre_camarero`, `pass_camarero`, `idMantenimiento`) VALUES
-(1, 'Xavier', '81dc9bdb52d04dc20036dbd8313ed055', NULL),
-(2, 'Sergio', '81dc9bdb52d04dc20036dbd8313ed055', NULL),
-(3, 'Judit', '81dc9bdb52d04dc20036dbd8313ed055', NULL),
-(4, 'Marc', '81dc9bdb52d04dc20036dbd8313ed055', 1),
-(7, 'Pepe', '81dc9bdb52d04dc20036dbd8313ed055', 2);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `espacio`
---
-
-CREATE TABLE `espacio` (
-  `id_espacio` int(11) NOT NULL,
-  `tipo_espacio` enum('Terraza','Comedor','VIPs') COLLATE utf8_spanish2_ci NOT NULL,
-  `capacidad_mesas` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `espacio`
---
-
-INSERT INTO `espacio` (`id_espacio`, `tipo_espacio`, `capacidad_mesas`) VALUES
-(1, 'VIPs', 3),
-(2, 'Terraza', 11),
-(3, 'Comedor', 6);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `horario`
---
-
-CREATE TABLE `horario` (
-  `id_horario` int(11) NOT NULL,
-  `hora_entrada` datetime NOT NULL,
-  `hora_salida` datetime NOT NULL,
-  `id_mesa` int(11) NOT NULL
+CREATE TABLE `tbl_categoria` (
+  `id_categoria` int(255) NOT NULL,
+  `nombre_categoria` enum('Alevin','Infantil','Cadete','Juvenil','Senior','Discapacitat') COLLATE utf8_spanish2_ci NOT NULL,
+  `rango_edad` enum('0-6 Anys','7-10 Anys','11-20 Anys','21-50 Anys','51-100 Anys') COLLATE utf8_spanish2_ci NOT NULL,
+  `sexo_categoria` enum('Home','Dona') COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mantenimiento`
+-- Estructura de tabla para la tabla `tbl_cursa`
 --
 
-CREATE TABLE `mantenimiento` (
-  `idMantenimiento` int(11) NOT NULL,
-  `numMante` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `mantenimiento`
---
-
-INSERT INTO `mantenimiento` (`idMantenimiento`, `numMante`) VALUES
-(1, '00001'),
-(2, '00002');
+CREATE TABLE `tbl_cursa` (
+  `id_cursa` int(255) NOT NULL,
+  `dorsal_participant` int(255) NOT NULL,
+  `isPagado` tinyint(1) NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mesas`
+-- Estructura de tabla para la tabla `tbl_inscripcio`
 --
 
-CREATE TABLE `mesas` (
-  `id_mesa` int(11) NOT NULL,
-  `capacidad_mesa` decimal(1,0) DEFAULT NULL,
-  `capacidad_max` decimal(1,0) NOT NULL,
-  `disp_mesa` enum('Libre','Ocupada','Reparacion') COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'Libre',
-  `id_camarero` int(11) DEFAULT NULL,
-  `id_espacio` int(11) NOT NULL
+CREATE TABLE `tbl_inscripcio` (
+  `id_inscripcio` int(255) NOT NULL,
+  `id_participant` int(255) NOT NULL,
+  `id_cursa` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `mesas`
+-- Estructura de tabla para la tabla `tbl_participant`
 --
 
-INSERT INTO `mesas` (`id_mesa`, `capacidad_mesa`, `capacidad_max`, `disp_mesa`, `id_camarero`, `id_espacio`) VALUES
-(1, '0', '8', 'Libre', NULL, 1),
-(2, '0', '8', 'Libre', NULL, 1),
-(3, '0', '8', 'Libre', NULL, 1),
-(4, '0', '4', 'Libre', NULL, 2),
-(5, '0', '4', 'Libre', NULL, 2),
-(6, '0', '4', 'Libre', NULL, 2),
-(7, '0', '4', 'Libre', NULL, 2),
-(8, '0', '4', 'Libre', NULL, 2),
-(9, '0', '4', 'Libre', NULL, 2),
-(10, '0', '4', 'Libre', NULL, 2),
-(11, '0', '4', 'Libre', NULL, 2),
-(12, '0', '4', 'Libre', NULL, 2),
-(13, '0', '4', 'Libre', NULL, 2),
-(14, '0', '4', 'Libre', NULL, 2),
-(15, '0', '4', 'Libre', NULL, 3),
-(16, '0', '4', 'Libre', NULL, 3),
-(17, '0', '4', 'Libre', NULL, 3),
-(18, '0', '4', 'Libre', NULL, 3),
-(19, '0', '4', 'Libre', NULL, 3),
-(20, '0', '4', 'Libre', NULL, 3);
+CREATE TABLE `tbl_participant` (
+  `id_participant` int(255) NOT NULL,
+  `data_naixement` date NOT NULL,
+  `sexe` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `dorsal_participant` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `id_categoria` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `camareros`
+-- Indices de la tabla `tbl_categoria`
 --
-ALTER TABLE `camareros`
-  ADD PRIMARY KEY (`id_camarero`),
-  ADD KEY `fkmantenimiento` (`idMantenimiento`);
+ALTER TABLE `tbl_categoria`
+  ADD PRIMARY KEY (`id_categoria`);
 
 --
--- Indices de la tabla `espacio`
+-- Indices de la tabla `tbl_cursa`
 --
-ALTER TABLE `espacio`
-  ADD PRIMARY KEY (`id_espacio`);
+ALTER TABLE `tbl_cursa`
+  ADD PRIMARY KEY (`id_cursa`);
 
 --
--- Indices de la tabla `horario`
+-- Indices de la tabla `tbl_inscripcio`
 --
-ALTER TABLE `horario`
-  ADD PRIMARY KEY (`id_horario`),
-  ADD KEY `id_mesa` (`id_mesa`);
+ALTER TABLE `tbl_inscripcio`
+  ADD PRIMARY KEY (`id_inscripcio`),
+  ADD UNIQUE KEY `FK_INSCRIPCIO_CURSA` (`id_cursa`),
+  ADD UNIQUE KEY `FK_INSCRIPCIO_PARTICIPANT` (`id_participant`);
 
 --
--- Indices de la tabla `mantenimiento`
+-- Indices de la tabla `tbl_participant`
 --
-ALTER TABLE `mantenimiento`
-  ADD PRIMARY KEY (`idMantenimiento`);
-
---
--- Indices de la tabla `mesas`
---
-ALTER TABLE `mesas`
-  ADD PRIMARY KEY (`id_mesa`),
-  ADD KEY `id_camarero` (`id_camarero`),
-  ADD KEY `id_espacio` (`id_espacio`);
+ALTER TABLE `tbl_participant`
+  ADD PRIMARY KEY (`id_participant`),
+  ADD UNIQUE KEY `FK_PARTICIPANT_INSCRIPCIO` (`id_categoria`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `camareros`
+-- AUTO_INCREMENT de la tabla `tbl_categoria`
 --
-ALTER TABLE `camareros`
-  MODIFY `id_camarero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `tbl_categoria`
+  MODIFY `id_categoria` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `espacio`
+-- AUTO_INCREMENT de la tabla `tbl_cursa`
 --
-ALTER TABLE `espacio`
-  MODIFY `id_espacio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `tbl_cursa`
+  MODIFY `id_cursa` int(255) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `horario`
+-- AUTO_INCREMENT de la tabla `tbl_inscripcio`
 --
-ALTER TABLE `horario`
-  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+ALTER TABLE `tbl_inscripcio`
+  MODIFY `id_inscripcio` int(255) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `mantenimiento`
+-- AUTO_INCREMENT de la tabla `tbl_participant`
 --
-ALTER TABLE `mantenimiento`
-  MODIFY `idMantenimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `mesas`
---
-ALTER TABLE `mesas`
-  MODIFY `id_mesa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+ALTER TABLE `tbl_participant`
+  MODIFY `id_participant` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `camareros`
+-- Filtros para la tabla `tbl_cursa`
 --
-ALTER TABLE `camareros`
-  ADD CONSTRAINT `fkmantenimiento` FOREIGN KEY (`idMantenimiento`) REFERENCES `mantenimiento` (`idMantenimiento`);
+ALTER TABLE `tbl_cursa`
+  ADD CONSTRAINT `tbl_cursa_ibfk_1` FOREIGN KEY (`id_cursa`) REFERENCES `tbl_inscripcio` (`id_cursa`);
 
 --
--- Filtros para la tabla `horario`
+-- Filtros para la tabla `tbl_inscripcio`
 --
-ALTER TABLE `horario`
-  ADD CONSTRAINT `FK_HORARIO_MESA` FOREIGN KEY (`id_mesa`) REFERENCES `mesas` (`id_mesa`);
+ALTER TABLE `tbl_inscripcio`
+  ADD CONSTRAINT `tbl_inscripcio_ibfk_1` FOREIGN KEY (`id_participant`) REFERENCES `tbl_participant` (`id_participant`);
 
 --
--- Filtros para la tabla `mesas`
+-- Filtros para la tabla `tbl_participant`
 --
-ALTER TABLE `mesas`
-  ADD CONSTRAINT `mesas_ibfk_2` FOREIGN KEY (`id_espacio`) REFERENCES `espacio` (`id_espacio`),
-  ADD CONSTRAINT `mesas_ibfk_3` FOREIGN KEY (`id_camarero`) REFERENCES `camareros` (`id_camarero`);
+ALTER TABLE `tbl_participant`
+  ADD CONSTRAINT `tbl_participant_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `tbl_categoria` (`id_categoria`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
