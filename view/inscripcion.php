@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- TEXT FONT -->
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
     <header id="header">
         <nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-sm">
             <a class="navbar-brand" href="index.html">
-                <img src="./img/logo.png" width="130" height="80" alt="Logo">
+                <img src="../img/logo.png" width="130" height="80" alt="Logo">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,9 +36,9 @@
 
             <div class="navbar-collapse collapse justify-content-center" id="navbarNavDropdown">
                 <div class="navbar-nav text-center">
-                    <a class="nav-item nav-link" href="index.html">Inicio</a>
+                    <a class="nav-item nav-link" href="./index.html">Inici</a>
                     <a class="nav-item nav-link" href="#">Classificacions</a>
-                    <a class="nav-item nav-link" href="#">Inscripcions</a>
+                    <a class="nav-item nav-link" href="../view/inscripcion.php">Inscripcions</a>
                     <a class="nav-item nav-link" href="#">Noticies</a>
                     <a class="nav-item nav-link" href="#">Galeria</a>
                 </div>
@@ -56,118 +56,74 @@
         </nav>
     </header>
 
-    <!--PRIMER CONTAINER-->
-    <div class="containerPrincipal container-fluid">
-        <div class="primerRow row align-items-center">
-            <div class="col">
-                <p>BUSQUEM FUTURES PROMESES</p>
-                <div class="bInscribirse">
-                    <button class="buttonI">INSCRIU-TE</button>
-                </div>
-            </div>
+    <div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <img src="../img/cursa.jpg" class="img-fluid rounded" alt="Responsive image">
         </div>
-        <div class="segundoRow row">
-            <div class="col">
-                <a href="#cuentaAtras"><img class="flecha" src="./img/flecha.gif" alt="Flecha"></a>
-            </div>
+        <div class="col">
+            <form action="../model/funciones.php" method="POST" onsubmit="return validacioInscripcio()"> 
+                <div class="container">
+                    <div class="row">
+                        <div class="col form-group"">
+                        Omple les teves dades!
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            <input type="text" class="form-control" name="dni" id="dni" placeholder="DNI">
+                        </div>
+                        <div class="col form-group">
+                            <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom...">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            <input type="text" class="form-control" name="primerCognom" id="primerCognom" placeholder="Primer cognom...">
+                        </div>
+                        <div class="col form-group">
+                            <input type="text" class="form-control" name="segonCognom" id="segonCognom" placeholder="Segon cognom...">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            <input type="date" class="form-control" name="data" id="data">
+                        </div>
+                        <div class="col form-group">
+                            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email...">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                        <select name="genero" class="form-control">
+                            <option value="home">Home</option>
+                            <option value="dona">Dona</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            <select name="categoria" class="form-control">
+                                <option value="rang1">0-6 Anys</option>
+                                <option value="rang2">7-10 Anys</option>
+                                <option value="rang3">11-20 Anys</option>
+                                <option value="rang4">21-50 Anys</option>
+                                <option value="rang5">51-100 Anys</option>
+                                <option value="disc">Discapacitat</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            <button type="submit" class="btn btn-primary">Registrar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
-    <!--CUENTA ATRAS-->
-    <div class="cuentaAtras container-fluid">
-        <div class="row align-items-center h-100">
-            <div class="col compteCB">
-                <p>COMPTE ENRERE PER A LA CURSA DE BELLVITGE</p>
-            </div>
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        244
-                        <p>DIES</p>
-                    </div>
-
-                    <div class="col">
-                        09
-                        <p>HORES</p>
-                    </div>
-
-                    <div class="col">
-                        41
-                        <p>MINUTS</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--BENVINGUDA-->
-    <div class="containerBenvinguda container-fluid">
-        <div class="row align-items-center h-100">
-            <div class="col-auto">
-                <img src="./img/cursa.jpg" class="img-fluid rounded" alt="Responsive image">
-            </div>
-            <div class="col">
-                <h3>Inici</h3>
-                <h2>Benvinguts</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error molestiae earum quaerat officia sunt ducimus eos, obcaecati accusantium adipisci et aut saepe asperiores autem pariatur ut facilis. Aut, ullam ea.</p>
-            </div>
-        </div>
-    </div>
-
-    <!--CLASSIFICACIONS-->
-    <div class="containerClassificacions container-fluid">
-        <div class="classificacionsRow row align-items-center">
-            <div class="col">
-                <h2>CLASSIFICACIONS</h2>
-            </div>
-            <div class="col">
-                <p class="border">INSCRIU-TE</p>
-            </div>
-        </div>
-    </div>
-
-    <!--NOTICIES-->
-    <div class="containerNoticies container-fluid">
-        <h1 style="text-align: center">Noticies</h1>
-        <div class="row align-items-center">
-            <div class="col">
-                <div class="card">
-                    <img src="./img/cursa.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="./img/cursa.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="./img/cursa.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--INFORMACIO-->
-    <div class="containerBenvinguda container-fluid">
-        <div class="row align-items-center h-100">
-            <div class="col">
-                <h2 style="text-align: center;">INFORMACIÓ</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo optio voluptatibus, tempore aut facere cupiditate officiis. Non doloribus blanditiis saepe ad sit asperiores obcaecati et sed ullam, laboriosam qui quos.</p>
-            </div>
-            <div class="col">
-                <img src="./img/cursa.jpg" class="img-fluid rounded" alt="Responsive image">
-            </div>
-        </div>
     </div>
 
     <!-- Footer -->
@@ -230,7 +186,7 @@
     </footer>
 
     <!--JS SRC-->
-    <script src="./js/index.js"></script>
+    <script src="../js/index.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

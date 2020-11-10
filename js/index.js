@@ -26,3 +26,19 @@ function misproyectos() {
     document.getElementById('misServiciosDiv').style.display = "none";
     document.getElementById('misProyectosDiv').style.display = "block";
 }
+
+// VALIDACIONS
+function validacioInscripcio() {
+    var dni = document.getElementById('dni').value;
+    var dniInput = document.getElementById('dni');
+
+    var dni_letters = "TRWAGMYFPDXBNJZSQVHLCKE";
+    var letter = dni_letters.charAt(parseInt(dni, 10) % 23);
+
+    if (letter == dni.charAt(8)) {
+        return true;
+    }
+
+    dniInput.style.borderColor = "red";
+    return false;
+}
