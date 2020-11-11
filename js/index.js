@@ -28,7 +28,7 @@ function misproyectos() {
 }
 
 // VALIDACIONS
-function validacioInscripcio() {
+function validarDNI() {
     var dni = document.getElementById('dni').value;
     var dniInput = document.getElementById('dni');
 
@@ -39,6 +39,63 @@ function validacioInscripcio() {
         return true;
     }
 
-    dniInput.style.borderColor = "red";
+    dniInput.style.border = "2px solid red";
     return false;
+}
+
+function validacioInscripcio() {
+    // variables 
+    var email = document.getElementById("email").value;
+    var nombre = document.getElementById("nom").value;
+    var dni = document.getElementById("dni").value;
+    var apellido = document.getElementById("primerCognom").value;
+    var apellido2 = document.getElementById("segonCognom").value;
+    var fecha = document.getElementById("data").value;
+
+    if (dni == '') {
+        document.getElementById("dni").style.border = "2px solid red";
+    }
+    if (nombre == '') {
+        document.getElementById("nom").style.border = "2px solid red";
+    }
+    if (apellido == '') {
+        document.getElementById("primerCognom").style.border = "2px solid red";
+    }
+    if (apellido2 == '') {
+        document.getElementById("segonCognom").style.border = "2px solid red";
+    }
+    if (email == '') {
+        document.getElementById("email").style.border = "2px solid red";
+    }
+    if (fecha == '') {
+        document.getElementById("data").style.border = "2px solid red";
+    }
+
+    if (dni != '') {
+        document.getElementById("dni").style.border = "white";
+    }
+    if (nombre != '') {
+        document.getElementById("nom").style.border = "white";
+    }
+    if (apellido != '') {
+        document.getElementById("primerCognom").style.border = "white";
+    }
+    if (apellido2 != '') {
+        document.getElementById("segonCognom").style.border = "white";
+    }
+    if (email != '') {
+        document.getElementById("email").style.border = "white";
+    }
+    if (fecha != '') {
+        document.getElementById("data").style.border = "white";
+    }
+
+    if (dni == '' || nombre == '' || apellido == '' || apellido2 == '' || email == '' || fecha == '') {
+        document.getElementsByClassName('message').innerHTML = '<p style="color:red">Rellene los campos obligatorios.</p>';
+        return false
+    } else {
+        validarDNI();
+    }
+
+    return true;
 }

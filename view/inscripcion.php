@@ -23,6 +23,15 @@
 </head>
 
 <body>
+
+    <?php
+    include_once "../model/funciones.php";
+    if(isset($_POST["form"])) {
+        $dbDAO = new dbDAO();
+        $dbDAO->addInscripcion();
+    }
+    ?>
+
     <!-- NAV -->
     <header id="header">
         <nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-sm">
@@ -63,7 +72,7 @@
             <img src="../img/cursa.jpg" class="img-fluid rounded" alt="Responsive image">
         </div>
         <div class="col">
-            <form action="../model/funciones.php" method="POST" onsubmit="return validacioInscripcio()"> 
+            <form action="./inscripcion.php" method="POST" onsubmit="return validacioInscripcio()"> 
                 <div class="container">
                     <div class="row">
                         <div class="col form-group"">
@@ -96,27 +105,29 @@
                     </div>
                     <div class="row">
                         <div class="col form-group">
-                        <select name="genero" class="form-control">
-                            <option value="home">Home</option>
-                            <option value="dona">Dona</option>
+                        <select name="genere" class="form-control">
+                            <option value="Home" selected>Home</option>
+                            <option value="Dona">Dona</option>
                         </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col form-group">
                             <select name="categoria" class="form-control">
-                                <option value="rang1">0-6 Anys</option>
-                                <option value="rang2">7-10 Anys</option>
-                                <option value="rang3">11-20 Anys</option>
-                                <option value="rang4">21-50 Anys</option>
-                                <option value="rang5">51-100 Anys</option>
-                                <option value="disc">Discapacitat</option>
+                                <option value="Alevin">Alevin (0-6 Anys)</option>
+                                <option value="Infantil">Infantil (7-10 Anys)</option>
+                                <option value="Cadete">Cadete (11-20 Anys)</option>
+                                <option value="Juvenil">Juvenil (21-50 Anys)</option>
+                                <option value="Senior">Senior (51-100 Anys)</option>
+                                <option value="Discapacitat">Discapacitat</option>
                             </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col form-group">
-                            <button type="submit" class="btn btn-primary">Registrar</button>
+                            <button name="form" type="submit" class="btn btn-primary">Registrar</button>
+                        </div>
+                        <div class="col form-group message">
                         </div>
                     </div>
                 </div>

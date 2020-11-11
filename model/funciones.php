@@ -1,6 +1,6 @@
 <?php
 
-class objetoDAO {
+class dbDAO {
     // ATRIBUTOS
     private $pdo;
 
@@ -21,57 +21,61 @@ class objetoDAO {
             $sCognom = $_POST['segonCognom'];
             $data = $_POST['data'];
             $email = $_POST['email'];
-            $genere = $_POST['genero'];
+            $genere = $_POST['genere'];
             $categoria = $_POST['categoria'];
+            $edat = date_diff(date_create($data), date_create('now'))->y;
 
-            $birthDate = explode("/", $data);
-            //get age from date or birthdate
-            $edat = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
-                ? ((date("Y") - $birthDate[2]) - 1)
-                : (date("Y") - $birthDate[2]));
-            echo "Age is:" . $age;
+            // INSERTEM EL PARTICIPANT
+            $query = "INSERT INTO `tbl_participant` (`id_participant`, `dni_participant`, `nom_participant`, `primer_cognom`, `segon_cognom`, `data_naixement`, `email_participant`, `sexe_participant`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);";
+            $sentencia=$this->pdo->prepare($query);
+            
+            $sentencia->bindParam(1,$dni);
+            $sentencia->bindParam(2,$nom);
+            $sentencia->bindParam(3,$pCognom);
+            $sentencia->bindParam(4,$sCognom);
+            $sentencia->bindParam(5,$data);
+            $sentencia->bindParam(6,$email);
+            $sentencia->bindParam(7,$genere);
 
-            if ($idMantenimiento != NULL) {
-                // INICIAMOS LA CATEGORIA
-                $query = "INSERT INTO `tbl_categoria`(`id_categoria`, `nombre_categoria`, `rango_edad`, `sexo_categoria`) VALUES (NULL, ?, ?, ?, ?)";
-                $sentencia=$this->pdo->prepare($query);
-                
-                if($edat>0 && $edat<=6) {
-                    $sentencia->bindParam(1,'Alevin');
-                } else if($edat>=7 && $edat<=10) {
-                    $sentencia->bindParam(1,'Infantil');
-                } else if($edat>=11 && $edat<=20) {
-                    $sentencia->bindParam(1,'Cadete');
-                } else if($edat>=21 && $edat<=50) {
-                    $sentencia->bindParam(1,'Juvenil');
-                } else if($edat>=51 && $edat<=100) {
-                    $sentencia->bindParam(1,'Senior');
-                } else {
-                    $sentencia->bindParam(1,'Discapacitat');
-                }
-                
-                $sentencia->bindParam(2,$categoria);
-                $sentencia->bindParam(3,$genere);
-                
-                $sentencia->execute();
-                // $id_categoria = $sentencia
+            $sentencia->execute();
+            $id_participante = $this->pdo->lastInsertId();
 
-                // INICIAMOS EL PARTICIPANT
-                $query = "INSERT INTO `tbl_participant`(`id_participant`, `data_naixement`, `sexe`, `dorsal_participant`, `id_categoria`) VALUES (NULL, ?, ?, ?, ?)";
-                $sentencia=$this->pdo->prepare($query);
-                
-                $sentencia->bindParam(1,$date);
-                $sentencia->bindParam(2,$genere);
-                $sentencia->bindParam(3,$dorsal);
-                
-                $sentencia->execute();
+            // INSERTEM INSCRIPCIO
+            $query = "INSERT INTO `tbl_inscripcio`(`dorsal_participant`, `id_participant`, `id_cursa`, `id_categoria`, `isPagado`) VALUES (NULL,?,1,?,'No')";
+            $sentencia=$this->pdo->prepare($query);
+            
+            $sentencia->bindParam(1,$id_participante);
 
-                $this->pdo->commit();
-                header('Location: ../view/index.html');
-            }else {
-                echo "<p class='msgMantenimiento'>Usted no es de mantenimiento</p>";
-                echo "<div class='btnVolverDiv'><a href='../view/zonaRestaurante.php?espacio={$espacio}' class='btnVolver'>Volver</a></div>";
+            if($edat>=0 && $edat<=6 && $genere=="Home") {
+                $id_categoria = 1;
+            } else if($edat>=7 && $edat<=10 && $genere=="Home") {
+                $id_categoria = 2;
+            } else if($edat>=11 && $edat<=20 && $genere=="Home") {
+                $id_categoria = 3;
+            } else if($edat>=21 && $edat<=50 && $genere=="Home") {
+                $id_categoria = 4;
+            } else if($edat>=51 && $edat<=100 && $genere=="Home") {
+                $id_categoria = 5;
+            } else if($categoria == "Discapacitat" && $genere=="Home") {
+                $id_categoria = 11;
+            } else if($edat>=0 && $edat<=6 && $genere=="Dona") {
+                $id_categoria = 5;
+            } else if($edat>=7 && $edat<=10 && $genere=="Dona") {
+                $id_categoria = 6;
+            } else if($edat>=11 && $edat<=20 && $genere=="Dona") {
+                $id_categoria = 7;
+            } else if($edat>=21 && $edat<=50 && $genere=="Dona") {
+                $id_categoria = 8;
+            } else if($edat>=51 && $edat<=100 && $genere=="Dona") {
+                $id_categoria = 9;
+            } else if($categoria == "Discapacitat" && $genere=="Dona") {
+                $id_categoria = 12;
             }
+            $sentencia->bindParam(2,$id_categoria);
+
+            $sentencia->execute();
+
+            $this->pdo->commit();            
 
         } catch (Exception $e) {
             $this->pdo->rollBack();
