@@ -22,6 +22,11 @@ class dbDAO {
             $data = $_POST['data'];
             $email = $_POST['email'];
             $genere = $_POST['genere'];
+            if(!isset($_POST['discapacitat'])) {
+                $discapacitat = "";
+            } else {
+                $discapacitat = $_POST['discapacitat'];
+            }
             $edat = date_diff(date_create($data), date_create('now'))->y;
 
             // INSERTEM EL PARTICIPANT
@@ -55,8 +60,6 @@ class dbDAO {
                 $id_categoria = 4;
             } else if($edat>=51 && $edat<=100 && $genere=="Home") {
                 $id_categoria = 5;
-            } else if($categoria == "Discapacitat" && $genere=="Home") {
-                $id_categoria = 11;
             } else if($edat>=0 && $edat<=6 && $genere=="Dona") {
                 $id_categoria = 5;
             } else if($edat>=7 && $edat<=10 && $genere=="Dona") {
@@ -67,9 +70,14 @@ class dbDAO {
                 $id_categoria = 8;
             } else if($edat>=51 && $edat<=100 && $genere=="Dona") {
                 $id_categoria = 9;
-            } else if($categoria == "Discapacitat" && $genere=="Dona") {
+            } 
+
+            if($discapacitat == "discapacitat" && $genere=="Home") {
+                $id_categoria = 11;
+            } else if ($discapacitat == "discapacitat" && $genere=="Dona") {
                 $id_categoria = 12;
             }
+
             $sentencia->bindParam(2,$id_categoria);
 
             $sentencia->execute();

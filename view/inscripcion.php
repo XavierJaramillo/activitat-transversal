@@ -113,6 +113,11 @@
                     </div>
                     <div class="row">
                         <div class="col form-group">
+                            <label style="color:black"><input type="checkbox" id="discapacitat" name="discapacitat" value="discapacitat"> Discapacitat</label><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
                             <button name="form" type="submit" class="btn btn-primary">Registrar</button>
                         </div>
                         <div class="col form-group message">
