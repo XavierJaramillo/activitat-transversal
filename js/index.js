@@ -48,7 +48,11 @@ function validarFor() {
             inputs[i].style.borderColor = "red";
         } else {
             inputs[i].style.borderColor = "transparent";
-            return validarDNI();
+            if (validarDNI()) {
+                return validarDNI();
+            } else {
+                inputs[0].style.borderColor = "red";
+            }
         }
     }
     return false;
