@@ -65,18 +65,18 @@
         </nav>
     </header>
 
-    <div class="container-fluid">
+    <div class="inscripcioDiv container-fluid py-5 px-5">
 
-    <div class="row">
-        <div class="col">
-            <img src="../img/cursa.jpg" class="img-fluid rounded" alt="Responsive image">
+    <div class="row inscRow">
+        <div class="col m-auto px-5 colImg">
+            <img src="../img/imgInsc.png" class="img-fluid rounded" alt="Responsive image">
         </div>
-        <div class="col">
-            <form action="./inscripcion.php" method="POST" onsubmit="return validacioInscripcio()"> 
+        <div class="col m-auto px-5">
+            <form action="./inscripcion.php" method="POST" onsubmit="return validarFor()"> 
                 <div class="container">
                     <div class="row">
                         <div class="col form-group"">
-                        Omple les teves dades!
+                        <p style="color:black;font-weight:bold;font-size:25px">Omple les teves dades!</p>
                         </div>
                     </div>
                     <div class="row">
@@ -113,18 +113,6 @@
                     </div>
                     <div class="row">
                         <div class="col form-group">
-                            <select name="categoria" class="form-control">
-                                <option value="Alevin">Alevin (0-6 Anys)</option>
-                                <option value="Infantil">Infantil (7-10 Anys)</option>
-                                <option value="Cadete">Cadete (11-20 Anys)</option>
-                                <option value="Juvenil">Juvenil (21-50 Anys)</option>
-                                <option value="Senior">Senior (51-100 Anys)</option>
-                                <option value="Discapacitat">Discapacitat</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col form-group">
                             <button name="form" type="submit" class="btn btn-primary">Registrar</button>
                         </div>
                         <div class="col form-group message">
@@ -138,62 +126,33 @@
     </div>
 
     <!-- Footer -->
-    <footer class="page-footer font-small blue pt-4">
-        <div class="container-fluid text-center text-md-left">
-            <div class="row">
-                <div class="col-md-6 mt-md-0 mt-3">
-                    <h5 class="text-uppercase">Cursa Bellvitge</h5>
-                    <a href="#"><i class="fab fa-twitter-square"></i></a>
-                    <a href="#"><i class="fab fa-facebook-square"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
-                </div>
+    <footer class="page-footer font-small special-color-dark pt-4">
 
-                <hr class="clearfix w-100 d-md-none pb-3">
+    <div class="container">
+        <ul class="list-unstyled list-inline text-center">
+            <li class="list-inline-item">
+                <a href="#" class="btn-floating btn-fb mx-1">
+                    <i class="fab fa-facebook-f"> </i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#" class="btn-floating btn-tw mx-1">
+                    <i class="fab fa-twitter"> </i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#" class="btn-floating btn-dribbble mx-1">
+                    <i class="fab fa-instagram"> </i>
+                </a>
+            </li>
+        </ul>
+    </div>
 
-                <div class="col-md-3 mb-md-0 mb-3">
-                    <h5 class="text-uppercase">Quick links</h5>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Inici</a>
-                        </li>
-                        <li>
-                            <a href="#!">Classificacions</a>
-                        </li>
-                        <li>
-                            <a href="#!">Noticies</a>
-                        </li>
-                        <li>
-                            <a href="#!">Login - Admin</a>
-                        </li>
-                        <li>
-                            <a href="#!">FeedBack</a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="./index.html"> JaramilloDev</a>
+    </div>
 
-                <div class="col-md-3 mb-md-0 mb-3">
-                    <h5 class="text-uppercase">Contacte</h5>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">19 de desembre 2020</a>
-                        </li>
-                        <li>
-                            <a href="#!">Vila Universitària de la Universitat Autònoma de Barcelona</a>
-                        </li>
-                        <li>
-                            <a href="#!">Circuit 95% asfalt</a>
-                        </li>
-                        <li>
-                            <a href="#!">Distàncies: 11.6km, 6.5km i 480m</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2020 Copyright: JaramilloDEV
-        </div>
     </footer>
 
     <!--JS SRC-->

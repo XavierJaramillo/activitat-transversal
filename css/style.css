@@ -22,12 +22,11 @@ body {
 .navbar-nav a {
     font-size: 1.5em;
     margin-right: 1em;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .navbar-nav a:hover {
-    opacity: 0.8;
-    background-color: black;
+    color: white!important;
     transform: translateY(-2px);
 }
 
@@ -35,7 +34,6 @@ body {
     .navbar-nav a {
         font-size: 1.5em;
         margin-right: 0;
-        text-decoration: underline;
     }
 }
 
@@ -152,13 +150,45 @@ body {
 }
 
 
+/* INSCRIPCIO */
+
+.inscripcioDiv {
+    height: 80%;
+    background-image: url(../img/bgInsc.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 576px) {
+    .inscripcioDiv {
+        height: 100vh;
+    }
+}
+
+.inscRow {
+    height: 100%;
+}
+
+.img-fluid {
+    min-width: 279px;
+}
+
+
 /* FOOTER */
 
 .page-footer {
-    background-color: lightskyblue;
+    background-color: rgb(52, 58, 64);
     color: black;
 }
 
 .footer-copyright {
-    background-color: rgb(110, 169, 206);
+    background-color: rgb(56, 62, 68);
+}
+
+.redes {
+    width: fit-content;
+}
+
+.redes a {
+    width: 50px!important;
 }

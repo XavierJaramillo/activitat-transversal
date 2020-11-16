@@ -22,7 +22,6 @@ class dbDAO {
             $data = $_POST['data'];
             $email = $_POST['email'];
             $genere = $_POST['genere'];
-            $categoria = $_POST['categoria'];
             $edat = date_diff(date_create($data), date_create('now'))->y;
 
             // INSERTEM EL PARTICIPANT
