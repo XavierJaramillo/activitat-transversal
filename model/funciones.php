@@ -61,15 +61,15 @@ class dbDAO {
             } else if($edat>=51 && $edat<=100 && $genere=="Home") {
                 $id_categoria = 5;
             } else if($edat>=0 && $edat<=6 && $genere=="Dona") {
-                $id_categoria = 5;
-            } else if($edat>=7 && $edat<=10 && $genere=="Dona") {
                 $id_categoria = 6;
-            } else if($edat>=11 && $edat<=20 && $genere=="Dona") {
+            } else if($edat>=7 && $edat<=10 && $genere=="Dona") {
                 $id_categoria = 7;
-            } else if($edat>=21 && $edat<=50 && $genere=="Dona") {
+            } else if($edat>=11 && $edat<=20 && $genere=="Dona") {
                 $id_categoria = 8;
-            } else if($edat>=51 && $edat<=100 && $genere=="Dona") {
+            } else if($edat>=21 && $edat<=50 && $genere=="Dona") {
                 $id_categoria = 9;
+            } else if($edat>=51 && $edat<=100 && $genere=="Dona") {
+                $id_categoria = 10;
             } 
 
             if($discapacitat == "discapacitat" && $genere=="Home") {
