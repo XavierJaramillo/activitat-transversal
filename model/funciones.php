@@ -58,7 +58,7 @@ class dbDAO {
                 $id_categoria = 3;
             } else if($edat>=21 && $edat<=50 && $genere=="Home") {
                 $id_categoria = 4;
-            } else if($edat>=51 && $edat<=100 && $genere=="Home") {
+            } else if($edat>=51 && $genere=="Home") {
                 $id_categoria = 5;
             } else if($edat>=0 && $edat<=6 && $genere=="Dona") {
                 $id_categoria = 6;
@@ -68,9 +68,9 @@ class dbDAO {
                 $id_categoria = 8;
             } else if($edat>=21 && $edat<=50 && $genere=="Dona") {
                 $id_categoria = 9;
-            } else if($edat>=51 && $edat<=100 && $genere=="Dona") {
+            } else if($edat>=51 && $genere=="Dona") {
                 $id_categoria = 10;
-            } 
+            }
 
             if($discapacitat == "discapacitat" && $genere=="Home") {
                 $id_categoria = 11;

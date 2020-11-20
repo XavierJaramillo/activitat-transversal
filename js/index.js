@@ -46,14 +46,13 @@ function validarFor() {
     for (var i = 0; i < inputs.length; i++) {
         if (inputs[i].type == 'text' && inputs[i].value == "") {
             inputs[i].style.borderColor = "red";
+        } else if (inputs[i].type == 'email' || inputs[i].type == 'date' && inputs[i].value == "") {
+            inputs[i].style.borderColor = "red";
         } else {
             inputs[i].style.borderColor = "transparent";
-            if (validarDNI()) {
-                return validarDNI();
-            } else {
-                inputs[0].style.borderColor = "red";
-            }
+            return true;
         }
     }
+
     return false;
 }

@@ -72,7 +72,7 @@
             <img src="../img/imgInsc.png" class="img-fluid rounded" alt="Responsive image">
         </div>
         <div class="col m-auto px-5">
-            <form action="./inscripcion.php" method="POST" onsubmit="return validarFor()"> 
+            <form action="./inscripcion.php" method="POST" onsubmit="return validarFor() && validarDNI()"> 
                 <div class="container">
                     <div class="row">
                         <div class="col form-group"">
@@ -97,10 +97,10 @@
                     </div>
                     <div class="row">
                         <div class="col form-group">
-                            <input type="date" class="form-control" name="data" id="data">
+                            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email...">
                         </div>
                         <div class="col form-group">
-                            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email...">
+                            <input type="date" class="form-control" name="data" id="data">
                         </div>
                     </div>
                     <div class="row">
