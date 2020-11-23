@@ -28,6 +28,10 @@ function misproyectos() {
 }
 
 // VALIDACIONS
+window.onload = function() {
+    document.getElementById('form').addEventListener('submit', validarFor);
+}
+
 function validarDNI() {
     var dni = document.getElementById('dni').value;
     var dniInput = document.getElementById('dni');
@@ -45,7 +49,7 @@ function validarDNI() {
     return flag;
 }
 
-function validarFor(event) {
+function validarFor() {
     var inputs = document.getElementsByTagName('input');
     var flag = true;
 

@@ -72,7 +72,7 @@
             <img src="../img/imgInsc.png" class="img-fluid rounded" alt="Responsive image">
         </div>
         <div class="col m-auto px-5">
-            <form action="./inscripcion.php" method="POST" onsubmit="return validarFor()"> 
+            <form id='form' action="./inscripcion.php" method="POST"> 
                 <div class="container">
                     <div class="row">
                         <div class="col form-group"">
@@ -118,7 +118,7 @@
                     </div>
                     <div class="row">
                         <div class="col form-group">
-                            <button name="form" type="submit" class="btn btn-primary">Registrar</button>
+                            <button name="button" type="submit" class="btn btn-primary">Registrar</button>
                         </div>
                         <div class="col form-group message">
                         </div>
