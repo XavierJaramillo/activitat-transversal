@@ -31,77 +31,43 @@ function misproyectos() {
 function validarDNI() {
     var dni = document.getElementById('dni').value;
     var dniInput = document.getElementById('dni');
-
     var dni_letters = "TRWAGMYFPDXBNJZSQVHLCKE";
     var letter = dni_letters.charAt(parseInt(dni, 10) % 23);
+    var flag = true;
 
     if (letter == dni.charAt(8)) {
-        return true;
+        dniInput.style.borderColor = 'transparent';
+    } else {
+        dniInput.style.borderColor = 'red';
+        flag = false;
     }
-    dniInput.style.border = "2px solid red";
 
-    return false;
+    return flag;
 }
 
-function validarFor() {
-    // variables 
-    var email = document.getElementById("email").value;
-    var nombre = document.getElementById("nom").value;
-    var dni = document.getElementById("dni").value;
-    var apellido = document.getElementById("primerCognom").value;
-    var apellido2 = document.getElementById("segonCognom").value;
-    var fecha = document.getElementById("data").value;
+function validarFor(event) {
+    var inputs = document.getElementsByTagName('input');
+    var flag = true;
 
-    if (dni == '') {
-        document.getElementById("dni").style.border = "2px solid red";
-    }
-    if (nombre == '') {
-        document.getElementById("nom").style.border = "2px solid red";
-    }
-    if (apellido == '') {
-        document.getElementById("primerCognom").style.border = "2px solid red";
-    }
-    if (apellido2 == '') {
-        document.getElementById("segonCognom").style.border = "2px solid red";
-    }
-    if (email == '') {
-        document.getElementById("email").style.border = "2px solid red";
-    }
-    if (fecha == '') {
-        document.getElementById("data").style.border = "2px solid red";
+    for (var i = 0; i < inputs.length; i++) {
+        console.log(inputs[i].id)
+        if (inputs[i].type == 'text' && inputs[i].value == "") {
+            inputs[i].style.borderColor = "red";
+            flag = false;
+        } else if (inputs[i].type == 'email' && inputs[i].value == "") {
+            inputs[i].style.borderColor = "red";
+            flag = false;
+        } else if (inputs[i].type == 'date' && inputs[i].value == "") {
+            inputs[i].style.borderColor = "red";
+            flag = false;
+        } else {
+            if (inputs[i].id != "dni") {
+                inputs[i].style.borderColor = "transparent";
+            }
+        }
     }
 
-    if (dni != '') {
-        document.getElementById("dni").style.border = "white";
+    if (!validarDNI || !flag) {
+        event.preventDefault();
     }
-    if (nombre != '') {
-        document.getElementById("nom").style.border = "white";
-    }
-    if (apellido != '') {
-        document.getElementById("primerCognom").style.border = "white";
-    }
-    if (apellido2 != '') {
-        document.getElementById("segonCognom").style.border = "white";
-    }
-    if (email != '') {
-        document.getElementById("email").style.border = "white";
-    }
-    if (fecha != '') {
-        document.getElementById("data").style.border = "white";
-    }
-
-    var flag = validarDNI();
-    if (!flag) {
-        document.getElementById("dni").style.border = "2px solid red";
-    } else {
-        document.getElementById("dni").style.border = "transparent";
-
-    }
-
-    if (dni == '' || nombre == '' || apellido == '' || apellido2 == '' || email == '' || fecha == '') {
-        document.getElementsByClassName('message').innerHTML = '<p style="color:red">Rellene los campos obligatorios.</p>';
-        return false
-    }
-
-    return true;
 }

@@ -72,7 +72,7 @@
             <img src="../img/imgInsc.png" class="img-fluid rounded" alt="Responsive image">
         </div>
         <div class="col m-auto px-5">
-            <form action="./inscripcion.php" method="POST" onsubmit="return validarFor() && validarDNI()"> 
+            <form action="./inscripcion.php" method="POST" onsubmit="return validarFor()"> 
                 <div class="container">
                     <div class="row">
                         <div class="col form-group"">
@@ -81,7 +81,7 @@
                     </div>
                     <div class="row">
                         <div class="col form-group">
-                            <input type="text" class="form-control" name="dni" id="dni" placeholder="DNI">
+                            <input type="text" class="form-control" name="dni" id="dni" onfocusout="validarDNI()" placeholder="DNI">
                         </div>
                         <div class="col form-group">
                             <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom...">
