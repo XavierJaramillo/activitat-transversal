@@ -26,7 +26,7 @@
 
     <?php
     include_once "../model/funciones.php";
-    if(isset($_POST["form"])) {
+    if(!isset($_POST["form"])) {
         $dbDAO = new dbDAO();
         $dbDAO->addInscripcion();
     }
@@ -72,7 +72,7 @@
             <img src="../img/imgInsc.png" class="img-fluid rounded" alt="Responsive image">
         </div>
         <div class="col m-auto px-5">
-            <form id='form' action="./inscripcion.php" method="POST"> 
+            <form id='form' action="./inscripcion.php" method="POST">
                 <div class="container">
                     <div class="row">
                         <div class="col form-group"">

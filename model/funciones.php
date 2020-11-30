@@ -82,7 +82,7 @@ class dbDAO {
 
             $sentencia->execute();
 
-            $this->pdo->commit();            
+            $this->pdo->commit();
 
         } catch (Exception $e) {
             $this->pdo->rollBack();
