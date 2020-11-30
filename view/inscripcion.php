@@ -26,7 +26,7 @@
 
     <?php
     include_once "../model/funciones.php";
-    if(isset($_POST["form"])) {
+    if(!isset($_POST["form"])) {
         $dbDAO = new dbDAO();
         $dbDAO->addInscripcion();
     }
@@ -72,7 +72,7 @@
             <img src="../img/imgInsc.png" class="img-fluid rounded" alt="Responsive image">
         </div>
         <div class="col m-auto px-5">
-            <form action="./inscripcion.php" method="POST" onsubmit="return validarFor() && validarDNI()"> 
+            <form id='form' action="./inscripcion.php" method="POST">
                 <div class="container">
                     <div class="row">
                         <div class="col form-group"">
@@ -81,7 +81,7 @@
                     </div>
                     <div class="row">
                         <div class="col form-group">
-                            <input type="text" class="form-control" name="dni" id="dni" placeholder="DNI">
+                            <input type="text" class="form-control" name="dni" id="dni" onfocusout="validarDNI()" placeholder="DNI">
                         </div>
                         <div class="col form-group">
                             <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom...">
@@ -118,7 +118,7 @@
                     </div>
                     <div class="row">
                         <div class="col form-group">
-                            <button name="form" type="submit" class="btn btn-primary">Registrar</button>
+                            <button name="button" type="submit" class="btn btn-primary">Registrar</button>
                         </div>
                         <div class="col form-group message">
                         </div>
