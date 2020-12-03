@@ -26,7 +26,7 @@
 
     <?php
     include_once "../model/funciones.php";
-    if(!isset($_POST["form"])) {
+    if(isset($_POST["dni"])) {
         $dbDAO = new dbDAO();
         $dbDAO->addInscripcion();
     }
